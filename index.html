@@ -1,406 +1,509 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wesołe Dmuchańce - Wynajem Dmuchańców dla Dzieci</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wesołe Dmuchańce - Wynajem Dmuchańców dla Dzieci</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
             primary: {
-              light: '#60a5fa', // light blue
-              DEFAULT: '#2563eb', // blue
-              dark: '#1d4ed8', // dark blue
+              light: '#60a5fa',
+              DEFAULT: '#2563eb',
+              dark: '#1d4ed8',
             },
-            secondary: '#facc15', // yellow
-            accent: '#fb923c', // orange
+            secondary: '#facc15',
+            accent: '#fb923c',
             neutral: {
-              light: '#f3f4f6', // light gray
-              DEFAULT: '#6b7280', // gray
-              dark: '#1f2937', // dark gray
+              light: '#f3f4f6',
+              DEFAULT: '#6b7280',
+              dark: '#1f2937',
             }
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
-            logo: ['Pacifico', 'cursive'], // Example fun font for logo
+            logo: ['Pacifico', 'cursive'],
           },
         }
       }
     }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
-    <style>
-      @font-face {
-        font-family: 'LucideIcons';
-        src: url(https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.ttf) format('truetype');
-      }
-      .lucide {
-        font-family: 'LucideIcons';
-        font-size: 1.25rem; /* Adjust size as needed */
-        line-height: 1;
-        display: inline-block; /* Ensures proper alignment */
-        vertical-align: middle; /* Aligns icon with text */
-      }
-      /* Custom styles */
-      html {
-         scroll-behavior: smooth; /* Ensure smooth scrolling for anchor links */
-      }
-      body {
-        font-family: 'Inter', sans-serif;
-        /* scroll-padding-top is important for anchor links with fixed/sticky headers */
-        /* Value should be roughly height of fixed bar + sticky nav */
-        scroll-padding-top: 110px;
-      }
-      .top-bar {
-        height: 48px; /* Fixed height for top bar */
-      }
-      .main-nav {
-         padding-top: 0.75rem; /* 12px */
-         padding-bottom: 0.75rem; /* 12px */
-         min-height: 60px; /* Approximate height for scroll padding calculation */
-      }
-      .logo-font {
-        font-family: 'Pacifico', cursive;
-      }
-      .hero-section {
-        /* Using a real image background - replace URL if needed */
-        background: linear-gradient(rgba(37, 99, 235, 0.75), rgba(29, 78, 216, 0.85)), url('https://images.unsplash.com/photo-1517241061326-3f037684a35a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center;
-        background-size: cover;
-        min-height: 450px; /* Slightly taller hero */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .gallery-img {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border-radius: 0.5rem; /* rounded-lg */
-      }
-      .gallery-img:hover {
-        transform: scale(1.03);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-      }
-      .top-bar-icon {
-         width: 1.1rem; /* Slightly smaller */
-         height: 1.1rem;
-         display: inline-block;
-         vertical-align: middle;
-         margin-right: 0.3rem; /* Smaller margin */
-      }
-      /* Mobile Menu Styling */
-      #mobile-menu {
-        transition: transform 0.3s ease-in-out;
-        /* Ensure it's above other content */
-        z-index: 60;
-      }
-      .menu-open {
-        transform: translateX(0%);
-      }
-      .menu-closed {
-         transform: translateX(100%);
-      }
-       /* Style for icons used as inline SVG */
-      .icon-svg {
-        width: 1.5rem; /* 24px */
-        height: 1.5rem; /* 24px */
-        display: inline-block;
-        vertical-align: middle;
-      }
-      /* Add cursor pointer to clickable elements in mobile menu */
-      #mobile-menu-button,
-      #mobile-menu-close-button,
-      .mobile-link {
-        cursor: pointer;
-      }
-    </style>
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'LucideIcons';
+      src: url(https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.ttf) format('truetype');
+    }
+    .lucide {
+      font-family: 'LucideIcons';
+      font-size: 1.25rem;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-padding-top: 110px;
+    }
+    .top-bar {
+      height: 48px;
+    }
+    .main-nav {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      min-height: 60px;
+    }
+    .logo-font {
+      font-family: 'Pacifico', cursive;
+    }
+    .hero-section {
+      background: linear-gradient(rgba(37, 99, 235, 0.75), rgba(29, 78, 216, 0.85)),
+                  url('https://images.unsplash.com/photo-1517241061326-3f037684a35a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')
+                  no-repeat center center;
+      background-size: cover;
+      min-height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gallery-img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 0.5rem;
+    }
+    .gallery-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+    }
+    .top-bar-icon {
+      width: 1.1rem;
+      height: 1.1rem;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.3rem;
+    }
+    /* Mobile Menu Styling */
+    #mobile-menu {
+      transition: transform 0.3s ease-in-out;
+      z-index: 60;
+    }
+    .menu-open {
+      transform: translateX(0%);
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .menu-closed {
+      transform: translateX(100%);
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .icon-svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    #mobile-menu-button,
+    #mobile-menu-close-button,
+    .mobile-link {
+      cursor: pointer;
+    }
+    /* Przyciski strzałek w galerii mobilnej */
+    .gallery-arrow {
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      padding: 0.5rem;
+      border-radius: 9999px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+    /* Ukrywanie paska przewijania */
+    #gallery-container {
+      -ms-overflow-style: none;  /* IE i Edge */
+      scrollbar-width: none;     /* Firefox */
+    }
+    #gallery-container::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+    /* Mobilna galeria – elementy z ustaloną szerokością */
+    .gallery-item {
+      flex: 0 0 auto;
+      width: 16rem;
+    }
+  </style>
 </head>
 <body class="bg-neutral-light">
+  <div class="fixed top-0 left-0 w-full bg-primary-dark text-white p-3 shadow-md z-50 flex justify-between items-center top-bar">
+    <div class="flex items-center text-sm">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/mail.svg" alt="Mail Icon" class="top-bar-icon filter invert brightness-0 saturate-100">
+      <a href="mailto:kontakt@wesoledmuchance.pl" class="hover:text-secondary transition duration-300">kontakt@wesoledmuchance.pl</a>
+    </div>
+    <div class="flex items-center text-sm">
+      <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/phone.svg" alt="Phone Icon" class="top-bar-icon filter invert brightness-0 saturate-100">
+      <a href="tel:+48123456789" class="hover:text-secondary transition duration-300">+48 123 456 789</a>
+    </div>
+  </div>
 
-    <div class="fixed top-0 left-0 w-full bg-primary-dark text-white p-3 shadow-md z-50 flex justify-between items-center top-bar">
-        <div class="flex items-center text-sm">
-             <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/mail.svg" alt="Mail Icon" class="top-bar-icon filter invert brightness-0 saturate-100">
-            <a href="mailto:kontakt@wesoledmuchance.pl" class="hover:text-secondary transition duration-300">kontakt@wesoledmuchance.pl</a>
+  <div class="pt-[48px]">
+    <nav class="bg-white shadow-md sticky top-[48px] z-40 main-nav">
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <a href="#" class="text-3xl font-bold text-primary logo-font">
+          Wesołe Dmuchańce
+        </a>
+        <div class="hidden md:flex space-x-6 items-center">
+          <a href="#o-nas" class="text-neutral hover:text-primary transition duration-300 font-medium">O Nas</a>
+          <a href="#galeria" class="text-neutral hover:text-primary transition duration-300 font-medium">Galeria</a>
+          <a href="#kontakt" class="text-neutral hover:text-primary transition duration-300 font-medium">Kontakt</a>
+          <a href="#kontakt" class="bg-secondary hover:bg-yellow-500 text-primary-dark font-bold py-2 px-4 rounded-full transition duration-300 text-sm">Zamów</a>
         </div>
-        <div class="flex items-center text-sm">
-            <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/phone.svg" alt="Phone Icon" class="top-bar-icon filter invert brightness-0 saturate-100">
-            <a href="tel:+48123456789" class="hover:text-secondary transition duration-300">+48 123 456 789</a>
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-button" class="text-neutral-dark focus:outline-none">
+            <svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
         </div>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-neutral-dark bg-opacity-95 backdrop-blur-sm transform menu-closed md:hidden p-6">
+      <div class="relative w-full h-full">
+        <div class="flex justify-end mb-6">
+          <button id="mobile-menu-close-button" class="text-white focus:outline-none">
+            <svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-col items-center space-y-6 mt-8">
+          <a href="#o-nas" class="text-white hover:text-secondary text-xl font-medium mobile-link">O Nas</a>
+          <a href="#galeria" class="text-white hover:text-secondary text-xl font-medium mobile-link">Galeria</a>
+          <a href="#kontakt" class="text-white hover:text-secondary text-xl font-medium mobile-link">Kontakt</a>
+          <a href="#kontakt" class="bg-secondary hover:bg-yellow-500 text-primary-dark font-bold py-2 px-5 rounded-full transition duration-300 text-lg mt-4 mobile-link">Zamów</a>
+        </div>
+      </div>
     </div>
 
-    <div class="pt-[48px]"> <nav class="bg-white shadow-md sticky top-[48px] z-40 main-nav">
-             <div class="container mx-auto px-4 flex justify-between items-center">
-                <a href="#" class="text-3xl font-bold text-primary logo-font">
-                    Wesołe Dmuchańce
-                </a>
-
-                <div class="hidden md:flex space-x-6 items-center">
-                    <a href="#o-nas" class="text-neutral hover:text-primary transition duration-300 font-medium">O Nas</a>
-                    <a href="#galeria" class="text-neutral hover:text-primary transition duration-300 font-medium">Galeria</a>
-                    <a href="#kontakt" class="text-neutral hover:text-primary transition duration-300 font-medium">Kontakt</a>
-                    <a href="#kontakt" class="bg-secondary hover:bg-yellow-500 text-primary-dark font-bold py-2 px-4 rounded-full transition duration-300 text-sm">Zamów</a>
-                </div>
-
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-neutral-dark focus:outline-none">
-                        <svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <div id="mobile-menu" class="fixed inset-0 bg-neutral-dark bg-opacity-95 backdrop-blur-sm transform menu-closed md:hidden p-6">
-            <div class="relative w-full h-full">
-                <div class="flex justify-end mb-6">
-                     <button id="mobile-menu-close-button" class="text-white focus:outline-none">
-                         <svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                     </button>
-                </div>
-                <div class="flex flex-col items-center space-y-6 mt-8">
-                     <a href="#o-nas" class="text-white hover:text-secondary text-xl font-medium mobile-link">O Nas</a>
-                     <a href="#galeria" class="text-white hover:text-secondary text-xl font-medium mobile-link">Galeria</a>
-                     <a href="#kontakt" class="text-white hover:text-secondary text-xl font-medium mobile-link">Kontakt</a>
-                     <a href="#kontakt" class="bg-secondary hover:bg-yellow-500 text-primary-dark font-bold py-2 px-5 rounded-full transition duration-300 text-lg mt-4 mobile-link">Zamów</a>
-                </div>
-            </div>
+    <main>
+      <section class="hero-section text-white text-center px-4">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Wynajem Dmuchańców dla Dzieci</h1>
+          <p class="text-lg md:text-xl mb-8 drop-shadow-md">Gwarancja niezapomnianej zabawy na każdą okazję!</p>
+          <a href="#kontakt" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 text-lg shadow-lg transform hover:scale-105">Skontaktuj się z nami</a>
         </div>
+      </section>
 
-
-        <main>
-            <section class="hero-section text-white text-center px-4">
-                 <div class="max-w-3xl">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Wynajem Dmuchańców dla Dzieci</h1>
-                    <p class="text-lg md:text-xl mb-8 drop-shadow-md">Gwarancja niezapomnianej zabawy na każdą okazję!</p>
-                    <a href="#kontakt" class="bg-accent hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 text-lg shadow-lg transform hover:scale-105">Skontaktuj się z nami</a>
-                 </div>
-            </section>
-
-            <section id="o-nas" class="py-16 md:py-24 px-4 bg-white">
-                <div class="container mx-auto text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Dlaczego Wesołe Dmuchańce?</h2>
-                    <p class="text-neutral max-w-3xl mx-auto mb-12 text-lg">
-                        Oferujemy szeroki wybór bezpiecznych i atestowanych dmuchańców, które uświetnią każdą imprezę plenerową, urodziny, festyn czy piknik rodzinny. Nasze dmuchańce to gwarancja uśmiechu i aktywnej zabawy dla dzieci w każdym wieku. Zapewniamy profesjonalną obsługę, montaż i demontaż.
-                    </p>
-                    <div class="grid md:grid-cols-3 gap-8 text-left">
-                        <div class="bg-neutral-light p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                             <div class="text-primary text-3xl mb-3">
-                                 <svg class="icon-svg inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                             </div>
-                            <h3 class="text-xl font-semibold text-primary-dark mb-2">Bezpieczeństwo</h3>
-                            <p class="text-neutral-dark">Wszystkie nasze urządzenia posiadają niezbędne atesty i są regularnie kontrolowane.</p>
-                        </div>
-                         <div class="bg-neutral-light p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                             <div class="text-primary text-3xl mb-3">
-                                 <svg class="icon-svg inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                             </div>
-                            <h3 class="text-xl font-semibold text-primary-dark mb-2">Różnorodność</h3>
-                            <p class="text-neutral-dark">Posiadamy dmuchane zamki, zjeżdżalnie, place zabaw i wiele innych atrakcji.</p>
-                        </div>
-                         <div class="bg-neutral-light p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                             <div class="text-primary text-3xl mb-3">
-                                 <svg class="icon-svg inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.5 8.5l7 7-7 7"></path><path d="M17.5 8.5l-7 7-7-7"></path><path d="M14 21H8a2 2 0 01-2-2V5a2 2 0 012-2h6l6 6v8a2 2 0 01-2 2z"></path><path d="M14 3v6h6"></path></svg>
-                             </div>
-                            <h3 class="text-xl font-semibold text-primary-dark mb-2">Kompleksowa Obsługa</h3>
-                            <p class="text-neutral-dark">Zajmujemy się transportem, montażem oraz demontażem dmuchańców.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="galeria" class="py-16 md:py-24 px-4 bg-neutral-light">
-                <div class="container mx-auto text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-12">Nasze Dmuchańce w Akcji</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
-                            <img src="https://images.unsplash.com/photo-1599056652376-f51417722f55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
-                                 alt="[Zdjęcie kolorowego dmuchanego zamku z wieżyczkami]"
-                                 class="w-full h-60 object-cover gallery-img"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
-                            <div class="p-5">
-                                <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Kolorowy Zamek</h3>
-                                <p class="text-neutral text-sm mt-1">Idealny dla małych księżniczek i rycerzy.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
-                            <img src="https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                                 alt="[Zdjęcie dużej, kolorowej dmuchanej zjeżdżalni]"
-                                 class="w-full h-60 object-cover gallery-img"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
-                            <div class="p-5">
-                                <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Wielka Zjeżdżalnia</h3>
-                                <p class="text-neutral text-sm mt-1">Mnóstwo radości i emocji podczas zjazdów.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
-                            <img src="https://images.unsplash.com/photo-1606658343039-37d067a7fb1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                                 alt="[Zdjęcie dmuchanego toru przeszkód z tunelami]"
-                                 class="w-full h-60 object-cover gallery-img"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
-                            <div class="p-5">
-                                <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Tor Przeszkód</h3>
-                                <p class="text-neutral text-sm mt-1">Dla aktywnych dzieci lubiących rywalizację.</p>
-                            </div>
-                        </div>
-                         <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
-                            <img src="https://images.unsplash.com/photo-1560174106-36a0135e4134?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                                 alt="[Zdjęcie dużego dmuchanego placu zabaw z różnymi elementami]"
-                                 class="w-full h-60 object-cover gallery-img"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
-                            <div class="p-5">
-                                <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Dmuchany Plac Zabaw</h3>
-                                <p class="text-neutral text-sm mt-1">Kompleksowa zabawa w jednym miejscu.</p>
-                            </div>
-                        </div>
-                         <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
-                            <img src="https://images.unsplash.com/photo-1574556017358-78d399b6e1a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
-                                 alt="[Zdjęcie mniejszego, kolorowego dmuchańca dla młodszych dzieci]"
-                                 class="w-full h-60 object-cover gallery-img"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
-                            <div class="p-5">
-                                <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Mały Dmuchaniec</h3>
-                                <p class="text-neutral text-sm mt-1">Idealny do mniejszych ogrodów.</p>
-                            </div>
-                        </div>
-                         <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
-                            <img src="https://images.unsplash.com/photo-1549937920-bce0f444d115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
-                                 alt="[Zdjęcie dmuchanego zamku połączonego ze zjeżdżalnią]"
-                                 class="w-full h-60 object-cover gallery-img"
-                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
-                            <div class="p-5">
-                                <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Zamek ze Zjeżdżalnią</h3>
-                                <p class="text-neutral text-sm mt-1">Połączenie skakania i zjeżdżania.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="kontakt" class="py-16 md:py-24 px-4 bg-primary text-white">
-                <div class="container mx-auto text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Skontaktuj się z Nami!</h2>
-                    <p class="text-lg mb-10 max-w-2xl mx-auto">
-                        Masz pytania lub chcesz zarezerwować dmuchaniec na swoją imprezę? Jesteśmy do Twojej dyspozycji! Zadzwoń lub napisz e-mail.
-                    </p>
-                    <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-10">
-                        <div class="flex items-center text-xl">
-                             <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/mail.svg" alt="Mail Icon" class="top-bar-icon filter invert brightness-0 saturate-100 mr-3">
-                            <a href="mailto:kontakt@wesoledmuchance.pl" class="hover:text-secondary transition duration-300 font-medium">kontakt@wesoledmuchance.pl</a>
-                        </div>
-                        <div class="flex items-center text-xl">
-                             <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/phone.svg" alt="Phone Icon" class="top-bar-icon filter invert brightness-0 saturate-100 mr-3">
-                            <a href="tel:+48123456789" class="hover:text-secondary transition duration-300 font-medium">+48 123 456 789</a>
-                        </div>
-                    </div>
-                     <div class="mt-12">
-                         <a href="tel:+48123456789" class="bg-secondary hover:bg-yellow-500 text-primary-dark font-bold py-3 px-8 rounded-full transition duration-300 text-lg shadow-lg inline-block transform hover:scale-105">Zadzwoń Teraz!</a>
-                     </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="bg-neutral-dark text-neutral text-center p-6">
-            <div class="container mx-auto">
-                 <p class="mb-2 logo-font text-secondary text-2xl">Wesołe Dmuchańce</p>
-                 <p>&copy; <span id="current-year"></span> Wesołe Dmuchańce. Wszelkie prawa zastrzeżone.</p>
-                 <p class="text-sm text-gray-500 mt-1">Projekt i wykonanie strony: [Twoja Nazwa/Firma lub pozostaw puste]</p>
+      <section id="o-nas" class="py-16 md:py-24 px-4 bg-white">
+        <div class="container mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">Dlaczego Wesołe Dmuchańce?</h2>
+          <p class="text-neutral max-w-3xl mx-auto mb-12 text-lg">
+            Oferujemy szeroki wybór bezpiecznych i atestowanych dmuchańców, które uświetnią każdą imprezę plenerową, urodziny, festyn czy piknik rodzinny. Nasze dmuchańce to gwarancja uśmiechu i aktywnej zabawy dla dzieci w każdym wieku. Zapewniamy profesjonalną obsługę, montaż i demontaż.
+          </p>
+          <div class="grid md:grid-cols-3 gap-8 text-left">
+            <div class="bg-neutral-light p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="text-primary text-3xl mb-3">
+                <svg class="icon-svg inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-primary-dark mb-2">Bezpieczeństwo</h3>
+              <p class="text-neutral-dark">Wszystkie nasze urządzenia posiadają niezbędne atesty i są regularnie kontrolowane.</p>
             </div>
-        </footer>
+            <div class="bg-neutral-light p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="text-primary text-3xl mb-3">
+                <svg class="icon-svg inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-primary-dark mb-2">Różnorodność</h3>
+              <p class="text-neutral-dark">Posiadamy dmuchane zamki, zjeżdżalnie, place zabaw i wiele innych atrakcji.</p>
+            </div>
+            <div class="bg-neutral-light p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="text-primary text-3xl mb-3">
+                <svg class="icon-svg inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M10.5 8.5l7 7-7 7"></path>
+                  <path d="M17.5 8.5l-7 7-7-7"></path>
+                  <path d="M14 21H8a2 2 0 01-2-2V5a2 2 0 012-2h6l6 6v8a2 2 0 01-2 2z"></path>
+                  <path d="M14 3v6h6"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-primary-dark mb-2">Kompleksowa Obsługa</h3>
+              <p class="text-neutral-dark">Zajmujemy się transportem, montażem oraz demontażem dmuchańców.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    </div> <script>
-        // Wait for the DOM to be fully loaded before attaching event listeners
-        document.addEventListener('DOMContentLoaded', function() {
+      <!-- Sekcja Galerii -->
+      <section id="galeria" class="py-16 md:py-24 px-4 bg-neutral-light">
+        <div class="container mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-12">Nasze Dmuchańce w Akcji</h2>
+          <!-- Wersja desktopowa: układ w gridzie -->
+          <div class="hidden md:grid grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
+              <img src="https://images.unsplash.com/photo-1599056652376-f51417722f55?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1074&amp;q=80"
+                alt="[Zdjęcie kolorowego dmuchanego zamku z wieżyczkami]"
+                class="w-full h-60 object-cover gallery-img"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
+              <div class="p-5">
+                <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Kolorowy Zamek</h3>
+                <p class="text-neutral text-sm mt-1">Idealny dla małych księżniczek i rycerzy.</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
+              <img src="https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=687&amp;q=80"
+                alt="[Zdjęcie dużej, kolorowej dmuchanej zjeżdżalni]"
+                class="w-full h-60 object-cover gallery-img"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
+              <div class="p-5">
+                <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Wielka Zjeżdżalnia</h3>
+                <p class="text-neutral text-sm mt-1">Mnóstwo radości i emocji podczas zjazdów.</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
+              <img src="https://images.unsplash.com/photo-1606658343039-37d067a7fb1f?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80"
+                alt="[Zdjęcie dmuchanego toru przeszkód z tunelami]"
+                class="w-full h-60 object-cover gallery-img"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
+              <div class="p-5">
+                <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Tor Przeszkód</h3>
+                <p class="text-neutral text-sm mt-1">Dla aktywnych dzieci lubiących rywalizację.</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
+              <img src="https://images.unsplash.com/photo-1560174106-36a0135e4134?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80"
+                alt="[Zdjęcie dużego dmuchanego placu zabaw z różnymi elementami]"
+                class="w-full h-60 object-cover gallery-img"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
+              <div class="p-5">
+                <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Dmuchany Plac Zabaw</h3>
+                <p class="text-neutral text-sm mt-1">Kompleksowa zabawa w jednym miejscu.</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
+              <img src="https://images.unsplash.com/photo-1574556017358-78d399b6e1a9?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80"
+                alt="[Zdjęcie mniejszego, kolorowego dmuchańca dla młodszych dzieci]"
+                class="w-full h-60 object-cover gallery-img"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
+              <div class="p-5">
+                <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Mały Dmuchaniec</h3>
+                <p class="text-neutral text-sm mt-1">Idealny do mniejszych ogrodów.</p>
+              </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden group">
+              <img src="https://images.unsplash.com/photo-1549937920-bce0f444d115?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1074&amp;q=80"
+                alt="[Zdjęcie dmuchanego zamku połączonego ze zjeżdżalnią]"
+                class="w-full h-60 object-cover gallery-img"
+                onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
+              <div class="p-5">
+                <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Zamek ze Zjeżdżalnią</h3>
+                <p class="text-neutral text-sm mt-1">Połączenie skakania i zjeżdżania.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Wersja mobilna: poziomo przewijana galeria z przyciskami -->
+          <div class="relative block md:hidden">
+            <button id="gallery-arrow-left" class="gallery-arrow left-2">
+              <svg class="icon-svg text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+            <div id="gallery-container" class="flex space-x-4 overflow-x-auto scroll-smooth py-4 px-8">
+              <!-- Umieszczamy wszystkie 6 elementów mobilnej galerii -->
+              <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1599056652376-f51417722f55?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1074&amp;q=80"
+                  alt="[Zdjęcie kolorowego dmuchanego zamku z wieżyczkami]"
+                  class="w-full h-60 object-cover gallery-img"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
+                <div class="p-5">
+                  <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Kolorowy Zamek</h3>
+                  <p class="text-neutral text-sm mt-1">Idealny dla małych księżniczek i rycerzy.</p>
+                </div>
+              </div>
+              <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=687&amp;q=80"
+                  alt="[Zdjęcie dużej, kolorowej dmuchanej zjeżdżalni]"
+                  class="w-full h-60 object-cover gallery-img"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
+                <div class="p-5">
+                  <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Wielka Zjeżdżalnia</h3>
+                  <p class="text-neutral text-sm mt-1">Mnóstwo radości i emocji podczas zjazdów.</p>
+                </div>
+              </div>
+              <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1606658343039-37d067a7fb1f?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80"
+                  alt="[Zdjęcie dmuchanego toru przeszkód z tunelami]"
+                  class="w-full h-60 object-cover gallery-img"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
+                <div class="p-5">
+                  <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Tor Przeszkód</h3>
+                  <p class="text-neutral text-sm mt-1">Dla aktywnych dzieci lubiących rywalizację.</p>
+                </div>
+              </div>
+              <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1560174106-36a0135e4134?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80"
+                  alt="[Zdjęcie dużego dmuchanego placu zabaw z różnymi elementami]"
+                  class="w-full h-60 object-cover gallery-img"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
+                <div class="p-5">
+                  <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Dmuchany Plac Zabaw</h3>
+                  <p class="text-neutral text-sm mt-1">Kompleksowa zabawa w jednym miejscu.</p>
+                </div>
+              </div>
+              <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1574556017358-78d399b6e1a9?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1170&amp;q=80"
+                  alt="[Zdjęcie mniejszego, kolorowego dmuchańca dla młodszych dzieci]"
+                  class="w-full h-60 object-cover gallery-img"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
+                <div class="p-5">
+                  <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Mały Dmuchaniec</h3>
+                  <p class="text-neutral text-sm mt-1">Idealny do mniejszych ogrodów.</p>
+                </div>
+              </div>
+              <div class="gallery-item bg-white rounded-xl shadow-lg overflow-hidden group">
+                <img src="https://images.unsplash.com/photo-1549937920-bce0f444d115?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1074&amp;q=80"
+                  alt="[Zdjęcie dmuchanego zamku połączonego ze zjeżdżalnią]"
+                  class="w-full h-60 object-cover gallery-img"
+                  onerror="this.onerror=null; this.src='https://placehold.co/600x400/cccccc/ffffff?text=Brak+Obrazka';">
+                <div class="p-5">
+                  <h3 class="text-xl font-semibold text-neutral-dark group-hover:text-primary transition duration-300">Zamek ze Zjeżdżalnią</h3>
+                  <p class="text-neutral text-sm mt-1">Połączenie skakania i zjeżdżania.</p>
+                </div>
+              </div>
+            </div>
+            <button id="gallery-arrow-right" class="gallery-arrow right-2">
+              <svg class="icon-svg text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
 
-            // Update year in footer
-            const currentYearSpan = document.getElementById('current-year');
-            if (currentYearSpan) {
-                currentYearSpan.textContent = new Date().getFullYear();
+      <section id="kontakt" class="py-16 md:py-24 px-4 bg-primary text-white">
+        <div class="container mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Skontaktuj się z Nami!</h2>
+          <p class="text-lg mb-10 max-w-2xl mx-auto">
+            Masz pytania lub chcesz zarezerwować dmuchaniec na swoją imprezę? Jesteśmy do Twojej dyspozycji! Zadzwoń lub napisz e-mail.
+          </p>
+          <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-10">
+            <div class="flex items-center text-xl">
+              <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/mail.svg" alt="Mail Icon" class="top-bar-icon filter invert brightness-0 saturate-100 mr-3">
+              <a href="mailto:kontakt@wesoledmuchance.pl" class="hover:text-secondary transition duration-300 font-medium">kontakt@wesoledmuchance.pl</a>
+            </div>
+            <div class="flex items-center text-xl">
+              <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/phone.svg" alt="Phone Icon" class="top-bar-icon filter invert brightness-0 saturate-100 mr-3">
+              <a href="tel:+48123456789" class="hover:text-secondary transition duration-300 font-medium">+48 123 456 789</a>
+            </div>
+          </div>
+          <div class="mt-12">
+            <a href="tel:+48123456789" class="bg-secondary hover:bg-yellow-500 text-primary-dark font-bold py-3 px-8 rounded-full transition duration-300 text-lg shadow-lg inline-block transform hover:scale-105">Zadzwoń Teraz!</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-neutral-dark text-neutral text-center p-6">
+      <div class="container mx-auto">
+        <p class="mb-2 logo-font text-secondary text-2xl">Wesołe Dmuchańce</p>
+        <p>&copy; <span id="current-year"></span> Wesołe Dmuchańce. Wszelkie prawa zastrzeżone.</p>
+        <p class="text-sm text-gray-500 mt-1">Projekt i wykonanie strony: [Twoja Nazwa/Firma lub pozostaw puste]</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Aktualizacja roku w stopce
+      const currentYearSpan = document.getElementById('current-year');
+      if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+      }
+
+      // Elementy sterujące mobilnym menu
+      const menuButton = document.getElementById('mobile-menu-button');
+      const closeButton = document.getElementById('mobile-menu-close-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('.mobile-link') : [];
+
+      function openMenu() {
+        if (mobileMenu) {
+          mobileMenu.classList.remove('menu-closed');
+          mobileMenu.classList.add('menu-open');
+        }
+      }
+      function closeMenu() {
+        if (mobileMenu) {
+          mobileMenu.classList.add('menu-closed');
+          mobileMenu.classList.remove('menu-open');
+        }
+      }
+      if (menuButton) {
+        menuButton.addEventListener('click', openMenu);
+      }
+      if (closeButton) {
+        closeButton.addEventListener('click', closeMenu);
+      }
+      if (mobileLinks.length > 0) {
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+      }
+
+      // Obsługa płynnego przewijania
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId && targetId.startsWith('#') && targetId.length > 1) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              e.preventDefault();
+              const topBar = document.querySelector('.top-bar');
+              const stickyNav = document.querySelector('.main-nav');
+              const topBarHeight = topBar ? topBar.offsetHeight : 0;
+              const stickyNavHeight = stickyNav ? stickyNav.offsetHeight : 0;
+              const headerOffset = topBarHeight + stickyNavHeight + 10;
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+              });
+              closeMenu();
             }
+          }
+        });
+      });
 
-            // Mobile Menu Toggle Elements
-            const menuButton = document.getElementById('mobile-menu-button');
-            const closeButton = document.getElementById('mobile-menu-close-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll('.mobile-link') : []; // Ensure mobileMenu exists
+      // Obsługa przewijania galerii mobilnej za pomocą przycisków
+      const galleryContainer = document.getElementById('gallery-container');
+      const arrowLeft = document.getElementById('gallery-arrow-left');
+      const arrowRight = document.getElementById('gallery-arrow-right');
 
-            // Function to open the mobile menu
-            function openMenu() {
-                if (mobileMenu) {
-                    mobileMenu.classList.remove('menu-closed');
-                    mobileMenu.classList.add('menu-open');
-                }
-            }
+      function scrollGallery(distance) {
+        if (galleryContainer) {
+          galleryContainer.scrollBy({ left: distance, behavior: "smooth" });
+        }
+      }
 
-            // Function to close the mobile menu
-            function closeMenu() {
-                 if (mobileMenu) {
-                    mobileMenu.classList.add('menu-closed');
-                    mobileMenu.classList.remove('menu-open');
-                }
-            }
-
-            // --- Event Listeners ---
-
-            // Open menu when hamburger button is clicked
-            if (menuButton) {
-                menuButton.addEventListener('click', openMenu);
-            }
-
-            // Close menu when close button is clicked
-            if (closeButton) {
-                closeButton.addEventListener('click', closeMenu);
-            }
-
-            // Close menu when a link inside the mobile menu is clicked
-            if (mobileLinks.length > 0) {
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', closeMenu);
-                });
-            }
-
-            // Close menu if clicking outside the menu content (on the backdrop)
-            // Optional: Add this if desired
-            // if (mobileMenu) {
-            //     mobileMenu.addEventListener('click', function(event) {
-            //         // Check if the click was directly on the backdrop (the #mobile-menu element itself)
-            //         if (event.target === mobileMenu) {
-            //             closeMenu();
-            //         }
-            //     });
-            // }
-
-
-            // --- Smooth Scrolling ---
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const targetId = this.getAttribute('href');
-                    // Prevent default only if it's a real anchor link within the page
-                    if (targetId && targetId.startsWith('#') && targetId.length > 1) {
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                             e.preventDefault(); // Prevent default only if target element exists
-
-                            // Calculate offset: fixed top bar height + sticky nav height + extra padding
-                            const topBar = document.querySelector('.top-bar');
-                            const stickyNav = document.querySelector('.main-nav');
-                            const topBarHeight = topBar ? topBar.offsetHeight : 0;
-                            const stickyNavHeight = stickyNav ? stickyNav.offsetHeight : 0;
-                            const headerOffset = topBarHeight + stickyNavHeight + 10; // Add 10px extra padding
-
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                            window.scrollTo({
-                                top: offsetPosition,
-                                behavior: "smooth"
-                            });
-                        }
-                    }
-                });
-            });
-        }); // End DOMContentLoaded listener
-
-    </script>
-
+      if (arrowLeft) {
+        arrowLeft.addEventListener('click', function() {
+          scrollGallery(-300);
+        });
+      }
+      if (arrowRight) {
+        arrowRight.addEventListener('click', function() {
+          scrollGallery(300);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
